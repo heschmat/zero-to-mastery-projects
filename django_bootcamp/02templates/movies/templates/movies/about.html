@@ -1,0 +1,10 @@
+{% extends "movies/_base.html" %}
+
+{% block content %}
+    <h1>About ME</h1>
+    {% load static %}
+    <img src="{% static 'movies/movie_theater.jpg' %}" alt="a movie theater">
+    <p>I watch bad movies, so you don’t have to—but sometimes I do it for fun.
+        My taste ranges from award-winning masterpieces to the kind of films that make you question humanity's choices.
+        Expect brutal honesty, a little sarcasm, and an undying love for popcorn.</p>
+{% endblock content %}
