@@ -1,0 +1,20 @@
+{% load humanize %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobBoard</title>
+</head>
+<body>
+    <h1>Active Job Postings</h1>
+    <ul>
+        {% for job in jobs %}
+        <li>
+            {{job.title|title}} @{{job.company}} | ${{job.salary|intcomma}}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
