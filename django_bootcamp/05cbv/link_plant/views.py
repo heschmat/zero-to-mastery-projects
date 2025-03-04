@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 
 from django.views.generic import (
@@ -41,3 +41,19 @@ class LinkDeleteView(DeleteView):
     success_url = reverse_lazy('link-list')
     # This looks for the template <model_name>_confirm_delete.html (here: link_confirm_delete.html)
     # also provides form to submit to delete the item
+
+
+def profile_view(request, profile_slug):
+    profile = get_object_or_404(Profile, slug=profile_slug)
+    # since in `Link` model, we've profided the `profile` field like so:
+    # profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='links')
+    # we can access the links related to a profile like the following.
+    # i.e., becaue of: related_name='links'
+    links = profile.links.all()
+
+    ctx = {
+        'profile': profile,
+        'links': links
+    }
+
+    return render(request, 'link_plant/profile.html', context=ctx)
