@@ -5,15 +5,25 @@
 
 
 {% block content %}
-<h1>Links</h1>
-{% if links %}
-    <ul>
+<div class="sm:w-2/3 mx-auto px-10">
+    <h1 class="text-4xl mb-2">Links</h1>
+    {% if links %}
         {% for link in links %}
-        <li><a href="{{ link.url }}" target='_blank' style="text-decoration: none;">{{ link.name}}</a></li>
+        <div class="border rounded px-12 py-8 my-6 hover:bg-gray-50">
+            <div class="flex justify-between items-center pb-6">
+                <p class="text-2xl">{{ link.name }}</p>
+                <p class="rounded-full bg-green-200 px-6 py-2">clicked: {{ link.nclicks }}x</p>
+            </div>
+
+            <div class="flex justify-between items-center">
+                <p><a class="underline text-blue-700" href="{{ link.url }}">{{ link.url }}</a></p>
+                <p class="underline text-blue-700"><a target="_blank" href="{% url 'forward-link' link.slug %}">Open /{{link.slug}} →</a></p>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
-{% else %}
-    <h2>No links</h2>
-{% endif %}
+    {% else %}
+        <h2>No links</h2>
+    {% endif %}
+</div>
 {% endblock content %}
 

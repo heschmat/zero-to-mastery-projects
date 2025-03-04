@@ -1,15 +1,18 @@
 {% extends "links/_base.html" %}
+{% load tailwind_filters %}
 
-{% block title %}add link{% endblock title %}add link
+{% block title %}add link{% endblock title %}
 
 {% block content %}
-<form action="" method="POST">
-    {% csrf_token %}
-    <!-- request.POST will capture/show the info for text-input as `link` (the given name) -->
-    {% comment %} <input type="text" name="link">  {% endcomment %}
-    {{ form }}
-    <input type="submit" value="ADD">
-</form>
+<div class="sm:w-1/2 mx-auto">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <!-- request.POST will capture/show the info for text-input as `link` (the given name) -->
+        {% comment %} <input type="text" name="link">  {% endcomment %}
+        {{ form|crispy }}
+        <input class="rounded px-5 py-2 bg-green-300 hover:cursor-pointer" type="submit" value="ADD">
+    </form>
+</div>
 {% endblock content %}
 
 
