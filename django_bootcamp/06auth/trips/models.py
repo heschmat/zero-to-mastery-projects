@@ -33,4 +33,4 @@ class Note(models.Model):
     img = models.ImageField(upload_to='notes', blank=True, null=True)
 
     def __str__(self):
-        return f'{self.title} in {self.tirp.city}'
+        return f'{self.title} in {self.trip.city}'

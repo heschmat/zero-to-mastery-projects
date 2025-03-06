@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 3rd party apps ------------------------ #
+    'crispy_forms',
+    'crispy_tailwind',
+
     # local apps ---------------------------- #
     'trips',
 ]
@@ -127,8 +131,16 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# URL for a smaple image would be like:
+# http://127.0.0.1:8000/media/notes/cafe-co-working-space.jpg
 MEDIA_URL = '/media/'
+# The `MEDIA_ROOT` directory will be created in your BASE_DIR,
+# Holding the uploaded images from the user.
 MEDIA_ROOT = os.path.join(BASE_DIR, 'app_media/')
+# the `notes` comes from **upload_to**:
+# img = models.ImageField(upload_to='notes', blank=True, null=True)
 
 LOGIN_REDIRECT_URL = 'trip-list'
-#LOGOUT_REDIRECT_URL = '/'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'tailwind'
+CRISPY_TEMPLATE_PACK = 'tailwind'

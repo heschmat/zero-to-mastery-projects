@@ -1,0 +1,14 @@
+{% extends "trips/_base.html" %}
+
+{% load tailwind_filters %}
+
+{% block content %}
+<div class="sm:w-3/4 mx-auto">
+    <h1 class="text-4xl mb-5">Make a new trip:</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Save" class="bg-green-400 px-7 py-2 rounded hover:cursor-pointer hover:bg-green-300">
+    </form>
+</div>
+{% endblock content %}
